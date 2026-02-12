@@ -34,6 +34,10 @@ func commandMapf(cfg *config, args ...string) error {
 
 func commandMapb(cfg *config, args ...string) error {
 	if cfg.previousLocationsURL == nil {
+		return errors.New("please use the 'map' command to get the first page of locations")
+	}
+
+	if *cfg.previousLocationsURL == "" {
 		return errors.New("you are on the first page")
 	}
 
